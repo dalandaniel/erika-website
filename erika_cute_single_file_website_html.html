@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>For Erika 💖</title>
+  <meta name="description" content="A tiny, cute website made with love for Erika." />
+  <style>
+    :root{
+      --bg: #fff7fb;
+      --card: #ffffff;
+      --accent: #ff8fb1;
+      --accent-2: #ffd1e1;
+      --text: #3a2a3a;
+      --muted: #6b5a6b;
+      --ring: #ffc5d6;
+    }
+
+    *{ box-sizing: border-box; }
+    html, body{
+      margin: 0; padding: 0; height: 100%;
+      font-family: "Segoe UI", system-ui, -apple-system, Roboto, "Helvetica Neue", Arial, "Noto Color Emoji", "Apple Color Emoji", sans-serif;
+      color: var(--text);
+      background: radial-gradient(1200px 800px at 10% 10%, #fff1f7 0%, var(--bg) 50%), radial-gradient(1200px 800px at 90% 10%, #fff1f7 0%, var(--bg) 50%);
+    }
+
+    /* Floating hearts background */
+    .hearts{
+      position: fixed; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; opacity: .25;
+    }
+    .heart{ position: absolute; width: 16px; height: 16px; transform: rotate(45deg); animation: float 12s linear infinite; }
+    .heart:before, .heart:after{ content: ""; position: absolute; background: var(--accent); width: 16px; height: 16px; border-radius: 50%; }
+    .heart:before{ top: -8px; left: 0; }
+    .heart:after{ left: -8px; top: 0; }
+    @keyframes float{ from{ transform: translateY(100vh) rotate(45deg); } to{ transform: translateY(-10vh) rotate(45deg); } }
+
+    header{
+      position: relative; z-index: 1;
+      padding: 64px 20px 24px;
+      text-align: center;
+    }
+    .badge{ display: inline-block; padding: 8px 14px; border-radius: 999px; background: var(--accent-2); color: #7b3b4f; font-weight: 600; border: 2px dashed var(--accent); }
+    h1{ font-size: clamp(28px, 6vw, 56px); margin: 14px auto 6px; line-height: 1.05; }
+    .subtitle{ color: var(--muted); font-size: clamp(14px, 2.6vw, 18px); }
+
+    .container{ position: relative; z-index: 1; max-width: 1040px; margin: 24px auto 80px; padding: 0 20px; }
+
+    .grid{
+      display: grid; gap: 16px; grid-template-columns: 1fr; 
+    }
+    @media (min-width: 800px){ .grid{ grid-template-columns: 1.1fr .9fr; } }
+
+    .card{
+      background: var(--card); border: 1px solid var(--ring);
+      border-radius: 20px; padding: 20px; box-shadow: 0 10px 30px rgba(255, 143, 177, .15);
+    }
+    .card h2{ margin: 0 0 8px; font-size: 22px; }
+    .muted{ color: var(--muted); font-size: 14px; }
+
+    .hero-photo{
+      width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 18px; border: 2px solid var(--ring);
+      background: linear-gradient(135deg, #ffe0ec, #fff);
+      display: grid; place-items: center; color: #8b5568; font-weight: 600;
+    }
+
+    .pill{ display:inline-flex; align-items:center; gap:8px; padding:10px 14px; border-radius:999px; border:1px solid var(--ring); background:#fff; }
+    .btn{ cursor: pointer; font-weight: 600; border: 2px solid var(--accent); background: var(--accent); color: #fff; padding: 10px 16px; border-radius: 999px; box-shadow: 0 8px 20px rgba(255,143,177,.35); transition: transform .06s ease;
+    }
+    .btn:active{ transform: translateY(1px); }
+
+    .timeline{ position: relative; padding-left: 18px; }
+    .timeline:before{ content:""; position:absolute; left:6px; top:4px; bottom:4px; width:2px; background: var(--ring); }
+    .timeline li{ list-style:none; margin:12px 0; padding-left:10px; }
+    .timeline time{ display:block; font-weight:700; color:#7b3b4f; }
+
+    .gallery{ display:grid; grid-template-columns: repeat(2, 1fr); gap:10px; }
+    @media (min-width:700px){ .gallery{ grid-template-columns: repeat(3, 1fr); } }
+    .gallery img{ width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:12px; border: 2px solid var(--ring); }
+
+    footer{ text-align:center; color: var(--muted); padding: 40px 0 80px; }
+
+    .note{ background: linear-gradient(180deg, #fff, #fff6fa); border: 1px solid var(--ring); border-radius: 16px; padding: 14px; }
+
+    .message-list{ display: grid; gap: 10px; max-height: 220px; overflow: auto; padding-right: 2px; }
+    .message{ background:#fff; border:1px solid var(--ring); padding:12px 14px; border-radius:12px; }
+
+    /* Floating paper rings */
+.rings {
+  position: fixed; inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+  opacity: .3;
+}
+.ring {
+  position: absolute;
+  border: 4px dashed; /* color set in JS */
+  border-radius: 50%;
+  animation: spin 10s linear infinite, floatRing 16s linear infinite;
+  opacity: 0.8;
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes floatRing {
+  from { transform: translateY(110vh) rotate(0deg); }
+  to { transform: translateY(-20vh) rotate(360deg); }
+}
+
+
+
+
+
+  </style>
+</head>
+<body>
+
+  <audio id="bg-music">
+    <source src="music/paperings.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  
+
+  <!-- floating hearts -->
+  <div class="hearts" aria-hidden="true" id="hearts"></div>
+  <!-- floating paper rings -->
+  <div class="rings" aria-hidden="true" id="rings"></div>
+
+  <header>
+    <span class="badge">Made with love by your web dev boyfriend, Dalandaniel 💌</span>
+    <h1>Good mornings Erika! <span aria-hidden>✨</span></h1>
+    <p class="subtitle">A tiny corner of the internet dedicated to you because you deserve all the cute thiingsss!!!. 🫶</p>
+    <button id="musicToggle" class="btn" style="margin-top:14px;">Play for a surprise</button>
+  </header>
+
+  <div class="container">
+    <div class="grid">
+      <section class="card">
+        <h2>Our Little Story</h2>
+        
+        <p class="muted">Just a short love note to say thank you for being you. No matter how busy life gets, you are my favorite part of every day. ♡</p>
+        <div class="note" id="stats">
+          <div class="pill" style="margin-bottom:10px;">💗 Together for <strong id="daysTogether">—</strong> days</div>
+          <div class="pill">📅 Next monthsary in <strong id="daysToNext">—</strong> days (on <strong id="nextDate">—</strong>)</div>
+        </div>
+        <div style="height:12px"></div>
+        <div class="hero-photo" aria-label="Replace this with your favorite photo together">
+          <!-- Replace the SRCs below with your real photo URLs -->
+          <span>📸 Add our favorite photo here</span>
+        </div>
+        <div style="height:12px"></div>
+        <button class="btn" id="addWish">✍️ Leave a sweet message</button>
+        <div style="height:12px"></div>
+        <div class="message-list" id="messages" aria-live="polite"></div>
+      </section>
+
+      <aside class="card">
+        <h2>Sweet Timeline</h2>
+        <ul class="timeline">
+          <li>
+            <time>November 7, 2024</time>
+            First meet!
+          </li>
+          <li>
+            <time>March 25, 2025</time>
+            The day we made it official (and my birthday 🎂) — best double‑celebration ever!
+          </li>
+          <li>
+            <time>May 31, 2025</time>
+            First Airplane ride together!
+          </li>
+          <li>
+            <time>Every 25th</time>
+            Our monthsary — a fresh page each month. 💐
+          </li>
+          <li>
+            <time>Someday soon</time>
+            Our Church wedding — can’t wait to say “I do.” ⛪️
+          </li>
+        </ul>
+
+        <div style="height:10px"></div>
+        <h2>Mini Gallery</h2>
+        <p class="muted">Replace these placeholders with your photos.</p>
+        <div class="gallery">
+          <!-- Replace the image sources with your own photos -->
+          <img src="photos/1.jpg" alt="Photo placeholder 1" />
+          <img src="photos/2.jpg" alt="Photo placeholder 2" />
+          <img src="photos/3.jpg" alt="Photo placeholder 3" />
+          <img src="photos/4.jpg" alt="Photo placeholder 4" />
+          <img src="photos/5.jpg" alt="Photo placeholder 5" />
+          <img src="photos/6.jpg" alt="Photo placeholder 6" />
+        </div>
+      </aside>
+    </div>
+
+    <section class="card" style="margin-top:16px;">
+      <h2>Little Promises</h2>
+      <ul>
+        <li>I will always choose you, in small ways and big ways. 💞</li>
+        <li>I’ll make time for coffee dates and forehead kisses. ☕️💋</li>
+        <li>I’ll keep showing up. with patience, honesty, and love poooo. 🌷</li>
+        <li>Always be your alipin 💞 🌷</li>
+
+        <h3>Something on my mind</h3>
+
+        just wanna tell you these because you need to know them.
+
+You know what? Every single day, you’re giving me more reasons to love you. The sweet and subtle gestures you do for me—like cooking for me, looking after me, reminding me of the little things. those are proofs of how much you care for me.
+
+Remember that time nung andito ka, yung recent lang, kakatapos mo lang ata ako lutuan, while I was sleeping, you were just sitting at my paanan, scrolling on your phone. When I woke up and saw you there, ibang iba talaga ng feeling. It was such a simple moment, pero it made me feel so secured, so loved, and so at home with you. In that moment, I realized na this kind of peace I never thought I’d find in someone. And then it hit me na I don’t just want you in my life, I need you in my forever.
+
+I also see how you care for me in ways I sometimes don’t even notice right away—like making sure I’m okay with finances, or giving me advice, or reminding me of things I tend to overlook. You always think of me, even when you don’t say it out. And that’s why I admire you for being selfless, always putting others before yourself.
+
+About the phone—again, you truly deserve it. And honestly, I don’t think of it as just a “want,” but as something for you. Something that will make your days brighter, something that reflects how much you give yet forget to treat yourself sometimes. Supporting you with that isn’t a burden—it’s a joy. Because making you happy is one of the greatest things I can ever do.
+
+And Bestieee, I also want to say sorry—for being inconsistent before, for not always giving you the best version of me. I know those times left scars, and I feel the weight of that whenever we talk about it. But instead of letting it drag me down, I want to let it push me forward—to become the man you deserve, the one who can match the love, patience, and care you’ve always given me.
+
+I treasure every moment with you—the laughter, the quiet times, the random talks, even the little arguments that remind me we’re real and we’re fighting for something worth keeping. With you, I’ve learned that love isn’t just about grand gestures; it’s in the everyday moments, the unspoken comfort, the silent security of having you by my side.
+
+I look forward to more mornings waking up beside you, more nights falling asleep knowing you’re the last person I talked to, more years of growing and improving together. I want us to look back one day and say, we made it through everything because we never gave up on each other.
+
+Thank you, Erika, for loving me the way you do—for being my safe place, my best friend, and the greatest blessing of my life. I’ll never stop choosing you, over and over again, in every version of forever we’ll have.
+
+I wrote this letter at 2:33 AM, the night of September 8, 2025, because even in the quietest hours, it’s you who lingers in my mind. And no matter how late or early it gets, my heart always finds its way back to you. Coornyyyyyy HAAHAHAHAHAHAHA
+
+I love you endlessly, Bestie. 💗
+
+      </ul>
+    </section>
+
+    <footer>
+      <p>Made for <strong>Erika</strong> by <strong>Daniel</strong> — <span id="year">2025</span> • With love, always. 💖</p>
+    </footer>
+  </div>
+
+  <script>
+    // Floating hearts generator
+    const hearts = document.getElementById('hearts');
+    for(let i=0;i<20;i++){
+      const h = document.createElement('div');
+      h.className = 'heart';
+      h.style.left = Math.random()*100 + 'vw';
+      h.style.animationDuration = (10 + Math.random()*8) + 's';
+      h.style.opacity = (0.3 + Math.random()*0.5);
+      hearts.appendChild(h);
+    }
+
+    // Floating rings generator
+    const rings = document.getElementById('rings');
+    const pastelColors = ["#ffb6c1", "#cdb4db", "#b5ead7", "#a0c4ff", "#ffd6a5"]; // pink, lavender, mint, blue, peach
+
+  for (let i = 0; i < 12; i++) {
+  const r = document.createElement('div');
+  r.className = 'ring';
+  r.style.left = Math.random() * 100 + 'vw';
+  r.style.animationDuration = (12 + Math.random() * 8) + 's, ' + (18 + Math.random() * 10) + 's';
+
+  // random size
+  const size = 20 + Math.random() * 50;
+  r.style.width = r.style.height = size + 'px';
+
+  // random pastel color
+  r.style.borderColor = pastelColors[Math.floor(Math.random() * pastelColors.length)];
+
+  rings.appendChild(r);
+  }
+
+    
+    // Dates logic (Philippines timezone assumed)
+    const start = new Date('2025-03-25T00:00:00'); // official date
+    const now = new Date();
+
+    const msPerDay = 24*60*60*1000;
+    const daysTogether = Math.floor((now - start) / msPerDay);
+    document.getElementById('daysTogether').textContent = daysTogether >= 0 ? daysTogether : 0;
+
+    function nextMonthsary(fromDate){
+      const d = new Date(fromDate);
+      const y = d.getFullYear();
+      const m = d.getMonth();
+      const day = d.getDate();
+
+      let target = new Date(y, m, 25);
+      if(day > 25){ target = new Date(y, m+1, 25); }
+      const diff = Math.ceil((target - d) / msPerDay);
+      return { diff: Math.max(diff, 0), date: target };
+    }
+
+    const next = nextMonthsary(now);
+    document.getElementById('daysToNext').textContent = next.diff;
+    document.getElementById('nextDate').textContent = next.date.toLocaleDateString(undefined, { year:'numeric', month:'long', day:'numeric' });
+
+    // Year in footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Add wish
+    const addBtn = document.getElementById('addWish');
+    const list = document.getElementById('messages');
+    addBtn.addEventListener('click', () => {
+      const msg = prompt('Type a sweet message for Erika:');
+      if(!msg) return;
+      const div = document.createElement('div');
+      div.className = 'message';
+      const time = new Date().toLocaleString();
+      div.textContent = `💌 ${msg}  —  ${time}`;
+      list.prepend(div);
+    });
+
+    const music = document.getElementById('bg-music');
+const musicBtn = document.getElementById('musicToggle');
+
+musicBtn.addEventListener('click', () => {
+  if (music.paused) {
+    music.play();
+    musicBtn.textContent = '⏸ Pause Music';
+  } else {
+    music.pause();
+    musicBtn.textContent = '▶ Play Music';
+  }
+});
+
+
+  </script>
+</body>
+</html>
