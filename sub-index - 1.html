@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Today 💕</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ffe6f0, #e6f7ff);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      flex-direction: column;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2.5rem;
+      color: #ff6699;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      max-width: 500px;
+      text-align: center;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      color: #ff99bb;
+      font-size: 1.5rem;
+      animation: rise 6s linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes rise {
+      0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+      }
+      50% { opacity: 1; }
+      100% {
+        transform: translateY(-10vh) scale(1);
+        opacity: 0;
+      }
+    }
+
+    /* Music Button */
+    .music-btn {
+      margin-top: 20px;
+      background: #ff6699;
+      border: none;
+      color: white;
+      font-size: 1rem;
+      padding: 12px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .music-btn:hover {
+      background: #ff3366;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+    <button class="music-btn" onclick="toggleMusic()">▶ Click this before reading. 💕</button>
+  <h2>Today 🌸</h2>
+  <div class="container">
+    <p>
+      Hi Bestie, this is just a small appreciation for you. 💕<br>
+      Thank you again for today — I really felt so special. Thank you for coming and staying up late with me.
+      I know we did it again, and we both loved it. I just want you to know that you’ll always be taken care of, okay?
+      <br>
+      I love it when you're singing this song and put your heart into the song. Yung charisma mo. it feels so different and so relaxing seeing you happy and enjoying the music.
+      Hahaha. If I get approved to go to Australia, we’ll be on call all day singing that song, okay? G? Hahaha. It really makes me feel lighter whenever you sing it jud.
+      even if you’re off-keys. HAHAHA kidding aside, I truly love seeing you happy.
+      <br>
+      Please continue smiling, but of course, only when there’s a reason. Don’t just laugh without one, please. HAHAHAHHAAH
+      <br>
+      
+    </p>
+  </div>
+
+  <!-- Audio -->
+  <audio id="bg-music" loop>
+    <source src="music/alltoowell.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    // Floating hearts generator
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "💖";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (3 + Math.random() * 5) + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 8000);
+    }
+    setInterval(createHeart, 800);
+
+    // Music toggle
+    const music = document.getElementById("bg-music");
+    const btn = document.querySelector(".music-btn");
+    let isPlaying = false;
+
+    function toggleMusic() {
+      if (isPlaying) {
+        music.pause();
+        btn.textContent = "▶ Play Music";
+      } else {
+        music.play();
+        btn.textContent = "⏸ Pause Music";
+      }
+      isPlaying = !isPlaying;
+    }
+  </script>
+</body>
+</html>
