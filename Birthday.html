@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy October Birthday, Erika! 💖</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Inter font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <!-- Removed Tone.js since we are now using a custom music link -->
+
+    <style>
+        /* Custom styles for the cute theme */
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #fce4ec 0%, #ffebee 100%); /* Soft Pink Gradient */
+            animation: backgroundShift 15s infinite alternate;
+        }
+
+        @keyframes backgroundShift {
+            0% { background-color: #fce4ec; }
+            100% { background-color: #e3f2fd; } /* Soft Blue transition */
+        }
+
+        .card {
+            box-shadow: 0 20px 25px -5px rgba(255, 105, 180, 0.3), 0 10px 10px -5px rgba(255, 105, 180, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .confetti-text {
+            color: #d81b60;
+            text-shadow: 2px 2px 0 #fff;
+        }
+
+        /* Responsive GIF size */
+        .gif-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 1.5rem; /* Rounded corners for the GIF */
+        }
+
+        .start-button {
+            transition: all 0.3s ease;
+            transform: scale(1);
+        }
+
+        .start-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.8);
+        }
+
+        /* Countdown specific styling */
+        .countdown-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem;
+            margin: 0 0.25rem;
+            min-width: 60px; /* Ensure consistent width for digits */
+        }
+        .countdown-number {
+            font-size: 2rem;
+            line-height: 1;
+            font-weight: 900;
+            color: #ec4899; /* Pink-500 */
+        }
+        .countdown-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #fb7185; /* Pink-400 */
+        }
+        @media (min-width: 768px) {
+            .countdown-number {
+                font-size: 3.5rem;
+            }
+            .countdown-label {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4 text-gray-800">
+
+    <!-- The hidden audio element for background music (Replace the 'src' link below!) -->
+    <audio id="birthday-music" loop preload="auto" style="display: none;">
+        <!-- 
+            USER ACTION REQUIRED: 
+            Replace the 'src' value below with the direct URL to your MP3, WAV, or OGG music file.
+        -->
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Loading/Start Screen Overlay -->
+    <div id="start-screen" class="fixed inset-0 flex items-center justify-center z-50 transition-opacity duration-1000 bg-pink-100/90">
+        <button id="start-button" class="start-button bg-pink-500 text-white font-black text-xl md:text-2xl py-4 px-8 rounded-full shadow-lg hover:bg-pink-600 focus:outline-none focus:ring-4 focus:ring-pink-300 transform motion-safe:animate-bounce">
+            Tap to Start the Music & Celebration! 💖
+        </button>
+    </div>
+
+    <!-- Main Content Card (Initially hidden) -->
+    <div id="main-content" class="hidden w-full max-w-sm md:max-w-xl p-8 bg-white rounded-3xl card text-center border-4 border-pink-300">
+
+        <!-- Header -->
+        <h1 class="text-4xl md:text-6xl font-black confetti-text mb-2">
+            HAPPY BIRTH MONTH!
+        </h1>
+        
+        <!-- Countdown Section -->
+        <p class="text-sm md:text-lg text-gray-500 font-medium mb-3">
+            Countdown to the 26th...
+        </p>
+        <div id="countdown" class="flex justify-center items-end bg-pink-50 p-3 md:p-4 rounded-xl border-2 border-pink-100 shadow-inner mb-6">
+            <div class="countdown-item">
+                <span id="days" class="countdown-number">00</span>
+                <span class="countdown-label">Days</span>
+            </div>
+            <div class="text-pink-400 text-3xl font-black md:text-5xl mb-1">:</div>
+            <div class="countdown-item">
+                <span id="hours" class="countdown-number">00</span>
+                <span class="countdown-label">Hours</span>
+            </div>
+            <div class="text-pink-400 text-3xl font-black md:text-5xl mb-1">:</div>
+            <div class="countdown-item">
+                <span id="minutes" class="countdown-number">00</span>
+                <span class="countdown-label">Minutes</span>
+            </div>
+            <div class="text-pink-400 text-3xl font-black md:text-5xl mb-1">:</div>
+            <div class="countdown-item">
+                <span id="seconds" class="countdown-number">00</span>
+                <span class="countdown-label">Seconds</span>
+            </div>
+        </div>
+        
+        <!-- Subtitle -->
+        <p class="text-xl md:text-2xl text-pink-500 font-semibold mb-6">
+            Erika, wishing you the happiest October!
+        </p>
+
+        <!-- GIF Container -->
+        <div class="gif-container my-8">
+            <!-- Using a universally happy/cute GIF. Ensure the URL is reliable or provide a fallback. -->
+            <img 
+                src="https://media.giphy.com/media/l4pTdcifPZLnyWbeM/giphy.gif" 
+                alt="Cute animated character celebrating with a heart and flowers" 
+                onerror="this.onerror=null; this.src='https://placehold.co/400x300/ffc0cb/ffffff?text=October+Joy'"
+                class="mx-auto"
+            >
+        </div>
+
+        <!-- Personalized Message -->
+        <div class="bg-pink-50 p-6 rounded-2xl border-2 border-pink-200">
+            <p class="text-lg md:text-xl font-medium text-gray-700">
+                May your whole month, leading up to the 26th, be filled with smiles, joy, and all the cute things in the world. You deserve the best!
+            </p>
+            <p id="final-message" class="mt-4 text-2xl font-extrabold text-pink-700">
+                <span class="text-3xl">🎉</span> Enjoy your special time! <span class="text-3xl">🎂</span>
+            </p>
+        </div>
+
+    </div>
+
+    <script>
+        // Global variables provided by the environment
+        const apiKey = "";
+        
+        // --- DOM Elements ---
+        const startButton = document.getElementById('start-button');
+        const startScreen = document.getElementById('start-screen');
+        const mainContent = document.getElementById('main-content');
+        const finalMessage = document.getElementById('final-message');
+        const birthday = document.getElementById('birthday-'); // Reference to the audio element
+        
+        const countdownElement = document.getElementById('countdown');
+        const daysElement = document.getElementById('days');
+        const hoursElement = document.getElementById('hours');
+        const minutesElement = document.getElementById('minutes');
+        const secondsElement = document.getElementById('seconds');
+
+        // --- COUNTDOWN LOGIC ---
+        // Target date: October 26th of the current year (or next year if date has passed)
+        function getTargetDate() {
+            const now = new Date();
+            let targetYear = now.getFullYear();
+            const targetMonth = 9; // October is 9 (0-indexed)
+            const targetDay = 26;
+
+            // If today is after Oct 26th, set the target for next year.
+            // This is important for when the app is viewed after the actual date.
+            if (now.getMonth() > targetMonth || (now.getMonth() === targetMonth && now.getDate() >= targetDay)) {
+                targetYear++;
+            }
+            
+            return new Date(targetYear, targetMonth, targetDay, 0, 0, 0, 0);
+        }
+
+        const countdownDate = getTargetDate().getTime();
+        
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = countdownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Output the result in elements
+            if (distance > 0) {
+                // Ensure all numbers are two digits
+                daysElement.textContent = days.toString().padStart(2, '0');
+                hoursElement.textContent = hours.toString().padStart(2, '0');
+                minutesElement.textContent = minutes.toString().padStart(2, '0');
+                secondsElement.textContent = seconds.toString().padStart(2, '0');
+            } else {
+                // If the countdown is finished (it's October 26th)
+                countdownElement.innerHTML = `<span class="text-3xl font-black text-pink-600">IT'S ERIKA'S TIME TO SHINE!</span>`;
+                finalMessage.innerHTML = `<span class="text-3xl">💖</span> HAPPY BIRTHDAY! <span class="text-3xl">🥳</span>`;
+                // Stop the interval to prevent unnecessary updates
+                clearInterval(countdownInterval); 
+            }
+        }
+        
+        // Initial call to prevent 1-second delay
+        updateCountdown();
+
+        // Update the count down every 1 second
+        let countdownInterval = setInterval(updateCountdown, 1000);
+
+
+        // ---  PLAYBACK & START SCREEN ---
+        
+        // Function to start the  and hide the splash screen
+        async function startCelebration() {
+            try {
+                // Start playing the audio file from the hidden <audio> tag
+                await birthday.play(); 
+
+                // Hide the start screen and show the content
+                startScreen.style.opacity = '0';
+                setTimeout(() => {
+                    startScreen.classList.add('hidden');
+                    mainContent.classList.remove('hidden');
+                }, 1000); // Wait for the fade out transition
+                
+            } catch (error) {
+                console.error("Error starting  playback (check your music URL!):", error);
+                // Even if music fails, show the content
+                startScreen.classList.add('hidden');
+                mainContent.classList.remove('hidden');
+            }
+        }
+
+        // Add event listener to the start button
+        startButton.addEventListener('click', startCelebration);
+
+        // Pre-check for touch devices to potentially change button text if needed
+        if ('ontouchstart' in window || navigator.maxTouchPoints) {
+            startButton.textContent = "Tap to Start the Music & Celebration! 💖";
+        }
+    </script>
+</body>
+</html>
