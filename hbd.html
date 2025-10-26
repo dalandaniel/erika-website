@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Bestiee!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #ffe0f0, #e0f7ff);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      text-align: center;
+      overflow: hidden;
+    }
+    h1 {
+      font-size: 3em;
+      color: #ff69b4;
+      margin-top: 2em;
+      animation: bounce 1s infinite;
+    }
+    p {
+      font-size: 1.3em;
+      color: #444;
+      max-width: 700px;
+      margin: 1em auto;
+      line-height: 1.6em;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    button {
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      padding: 1em 2em;
+      font-size: 1.2em;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 1em;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    button:hover {
+      background-color: #ff85c1;
+    }
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #ff69b4;
+      animation: fall 3s infinite;
+    }
+    @keyframes fall {
+      0% { top: -10px; opacity: 1; }
+      100% { top: 100vh; opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <h1>🎉 Happy Birthday, Bestiee! 🎂</h1>
+
+  <p>
+    Belated happy birthday, Bestiee!!!  
+  </p>
+  <p>
+    Thank you for being selfless and letting me indulge in the things I love, even on your day.  
+  </p>
+  <p>
+    But the real spotlight of our trip wasn’t the places we went — it was our simple, genuine time together at the Airbnb. Singing songs, watching movies, and just being ourselves… it was pure, chill, and so real. Those moments with you are what I’ll treasure most.  
+  </p>
+  <p>
+    I’m happy seeing you happy. Sana nag-enjoy ka sa birthday mo. I promise I’ll always be here to make you smile, to make you feel loved, and to make every moment with me worth it. You deserve nothing less than the best.  
+  </p>
+  <p style="font-weight:bold; color:#ff1493; font-size:1.4em;">
+    You are my favorite part of every day, Bestiee. 💖
+  </p>
+
+  <button onclick="document.getElementById('birthdayMusic').play()">Play Birthday Music 🎵</button>
+  <audio id="birthdayMusic">
+    <source src="music/wood.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    for (let i = 0; i < 100; i++) {
+      const confetti = document.createElement('div');
+      confetti.className = 'confetti';
+      confetti.style.left = Math.random() * window.innerWidth + 'px';
+      confetti.style.background = `hsl(${Math.random() * 360}, 100%, 75%)`;
+      confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      document.body.appendChild(confetti);
+    }
+  </script>
+</body>
