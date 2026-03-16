@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Erika 💙🐥</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Chewy&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sky-blue: #bde0fe;
+            --ocean-blue: #0077b6;
+            --yellow-bird: #ffca3a;
+            --white: #ffffff;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--sky-blue);
+            background-image: radial-gradient(var(--white) 2px, transparent 2px);
+            background-size: 40px 40px; /* Polka dot background */
+            color: #2c3e50;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        /* --- THE FLOATING SIDE-BIRD --- */
+        .side-bird {
+            position: fixed;
+            right: 30px;
+            top: 40%;
+            font-size: 4rem;
+            z-index: 100;
+            animation: fly 4s ease-in-out infinite;
+        }
+
+        @keyframes fly {
+            0%, 100% { transform: translateY(0) scaleX(-1); }
+            50% { transform: translateY(-30px) scaleX(-1); }
+        }
+
+        header { padding: 80px 20px; }
+        h1 {
+            font-family: 'Chewy', cursive;
+            font-size: 4.5rem;
+            color: var(--ocean-blue);
+            text-shadow: 3px 3px var(--white);
+        }
+
+        /* --- SURPRISE BUTTON --- */
+        .surprise-btn {
+            background-color: #ff595e;
+            color: white;
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.8rem;
+            padding: 20px 50px;
+            border: none;
+            border-radius: 100px;
+            cursor: pointer;
+            box-shadow: 0 10px 0px #c1121f;
+            transition: 0.2s;
+            margin: 40px 0;
+            animation: heartbeat 1.5s infinite;
+        }
+
+        .surprise-btn:active {
+            transform: translateY(10px);
+            box-shadow: 0 0px 0px #c1121f;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            10% { transform: scale(1.1); }
+            20% { transform: scale(1); }
+            40% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* --- SURPRISE MODAL (POPUP) --- */
+        #modal-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            display: none; /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 40px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+
+        #countdown {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2rem;
+            color: var(--ocean-blue);
+            margin: 20px 0;
+        }
+
+        .close-btn {
+            margin-top: 20px;
+            background: var(--sky-blue);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* --- THE GALLERY --- */
+        .gallery {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 40px;
+            flex-wrap: wrap;
+        }
+        .gallery img {
+            width: 250px;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 30px;
+            border: 10px solid white;
+            transform: rotate(-3deg);
+        }
+
+        /* --- BACK TO OLD WEBSITE BUTTON --- */
+        .old-site-container {
+            margin-top: 50px;
+            padding-bottom: 50px;
+        }
+
+        .old-site-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            background: transparent;
+            color: var(--ocean-blue);
+            border: 2px solid var(--ocean-blue);
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .old-site-btn:hover {
+            background: var(--ocean-blue);
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="side-bird">🐥</div>
+
+    <header>
+        <h1>Hey, Panget! 💙</h1>
+        <p>A little something for our 1st Anniversary...</p>
+    </header>
+
+    <div class="gallery">
+        <img src="https://via.placeholder.com/300/white/0077b6?text=Us" style="transform: rotate(3deg);">
+        <img src="https://via.placeholder.com/300/white/0077b6?text=Memory">
+    </div>
+
+    <button class="surprise-btn" onclick="openSurprise()">SURPRISE! 🎁</button>
+
+    <div id="modal-overlay">
+        <div class="modal-content">
+            <h2 style="font-family: 'Fredoka One';">Huli Ka, Erika! Hahahaha🤫</h2>
+            <p>I know you're excited, but the big surprise isn't ready until our anniversary (and my birthday!)</p>
+            
+            <div id="countdown">Loading...</div>
+
+            <p><i>Everything is better when we wait for it together. I love you!</i></p>
+            
+            <button class="close-btn" onclick="closeSurprise()">I'll wait! 💙</button>
+            <br><br>
+            <a href="other.html" style="color: var(--ocean-blue); font-weight: bold;">Click here for a small teaser</a>
+        </div>
+    </div>
+
+    <div class="old-site-container">
+        <a href="old_index.html" class="old-site-btn">Go back to old website</a>
+    </div>
+
+    <script>
+        function openSurprise() {
+            document.getElementById('modal-overlay').style.display = 'flex';
+        }
+
+        function closeSurprise() {
+            document.getElementById('modal-overlay').style.display = 'none';
+        }
+
+        // --- COUNTDOWN LOGIC ---
+        // Anniversary/Birthday: March 25, 2026
+        const targetDate = new Date("March 25, 2026 00:00:00").getTime();
+
+        const timer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+            if (distance < 0) {
+                clearInterval(timer);
+                document.getElementById("countdown").innerHTML = "HAPPY ANNIVERSARY!";
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>
