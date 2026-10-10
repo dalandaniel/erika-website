@@ -3,231 +3,351 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Erika 💙🐥</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Chewy&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+    <title>For My Love, Erika 💖</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Poppins & Fredoka for cozy/cute vibes -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome for cute icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Canvas Confetti for celebrations -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
     <style>
-        :root {
-            --sky-blue: #bde0fe;
-            --ocean-blue: #0077b6;
-            --yellow-bird: #ffca3a;
-            --white: #ffffff;
-        }
-
         body {
-            margin: 0;
-            padding: 0;
             font-family: 'Poppins', sans-serif;
-            background-color: var(--sky-blue);
-            background-image: radial-gradient(var(--white) 2px, transparent 2px);
-            background-size: 40px 40px; /* Polka dot background */
-            color: #2c3e50;
-            text-align: center;
-            overflow-x: hidden;
+            background-color: #fffaf0; /* Warm cream background */
+            color: #4a3b32;
         }
-
-        /* --- THE FLOATING SIDE-BIRD --- */
-        .side-bird {
-            position: fixed;
-            right: 30px;
-            top: 40%;
-            font-size: 4rem;
-            z-index: 100;
-            animation: fly 4s ease-in-out infinite;
+        h1, h2, h3, .font-heading {
+            font-family: 'Fredoka', sans-serif;
         }
-
-        @keyframes fly {
-            0%, 100% { transform: translateY(0) scaleX(-1); }
-            50% { transform: translateY(-30px) scaleX(-1); }
-        }
-
-        header { padding: 80px 20px; }
-        h1 {
-            font-family: 'Chewy', cursive;
-            font-size: 4.5rem;
-            color: var(--ocean-blue);
-            text-shadow: 3px 3px var(--white);
-        }
-
-        /* --- SURPRISE BUTTON --- */
-        .surprise-btn {
-            background-color: #ff595e;
-            color: white;
-            font-family: 'Fredoka One', cursive;
-            font-size: 1.8rem;
-            padding: 20px 50px;
-            border: none;
-            border-radius: 100px;
-            cursor: pointer;
-            box-shadow: 0 10px 0px #c1121f;
-            transition: 0.2s;
-            margin: 40px 0;
-            animation: heartbeat 1.5s infinite;
-        }
-
-        .surprise-btn:active {
-            transform: translateY(10px);
-            box-shadow: 0 0px 0px #c1121f;
-        }
-
-        @keyframes heartbeat {
-            0% { transform: scale(1); }
-            10% { transform: scale(1.1); }
-            20% { transform: scale(1); }
-            40% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-        /* --- SURPRISE MODAL (POPUP) --- */
-        #modal-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8);
-            display: none; /* Hidden by default */
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .modal-content {
-            background: var(--white);
-            padding: 40px;
-            border-radius: 40px;
-            max-width: 500px;
-            width: 90%;
-            position: relative;
-        }
-
-        #countdown {
-            font-family: 'Fredoka One', cursive;
-            font-size: 2rem;
-            color: var(--ocean-blue);
-            margin: 20px 0;
-        }
-
-        .close-btn {
-            margin-top: 20px;
-            background: var(--sky-blue);
-            border: none;
-            padding: 10px 20px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-weight: bold;
-        }
-
-        /* --- THE GALLERY --- */
-        .gallery {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding: 40px;
-            flex-wrap: wrap;
-        }
-        .gallery img {
-            width: 250px;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 30px;
-            border: 10px solid white;
-            transform: rotate(-3deg);
-        }
-
-        /* --- BACK TO OLD WEBSITE BUTTON --- */
-        .old-site-container {
-            margin-top: 50px;
-            padding-bottom: 50px;
-        }
-
-        .old-site-btn {
-            display: inline-block;
-            padding: 10px 25px;
-            background: transparent;
-            color: var(--ocean-blue);
-            border: 2px solid var(--ocean-blue);
-            border-radius: 30px;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
+        /* Custom cute soft shadows and borders */
+        .cute-card {
+            background: #ffffff;
+            border: 3px dashed #fcd34d;
+            border-radius: 2rem;
+            box-shadow: 0 10px 25px -5px rgba(251, 191, 36, 0.15);
             transition: all 0.3s ease;
         }
-
-        .old-site-btn:hover {
-            background: var(--ocean-blue);
-            color: white;
+        .cute-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 30px -5px rgba(251, 191, 36, 0.25);
         }
-
+        .pulse-heart {
+            animation: pulse-slow 2s infinite;
+        }
+        @keyframes pulse-slow {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fff5f5;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #fbcfe8;
+            border-radius: 5px;
+        }
     </style>
 </head>
-<body>
+<body class="bg-[#FFFDF9] min-h-screen flex flex-col justify-between selection:bg-pink-200">
 
-    <div class="side-bird">🐥</div>
-
-    <header>
-        <h1>Hey, Panget! 💙</h1>
-        <p>A little something for our 1st Anniversary...Website is still under construction 🤫</p>
+    <header class="w-full py-6 px-4 bg-gradient-to-r from-pink-100 via-yellow-50 to-pink-100 shadow-sm border-b border-pink-200/50">
+        <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between text-center sm:text-left gap-3">
+            <div class="flex items-center space-x-3">
+                <span class="text-3xl pulse-heart">🧸</span>
+                <div>
+                    <h1 class="text-2xl font-bold text-pink-600 tracking-wide">For My Dearest Erika</h1>
+                    <p class="text-xs text-amber-700 font-medium">Made with all my love by Daniel 💌</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2 bg-white/80 px-4 py-2 rounded-full border border-pink-200 shadow-xs text-sm text-pink-700 font-semibold">
+                <i class="fa-solid fa-heart text-pink-500 animate-bounce"></i>
+                <span>Endometriosis Warrior & Foodie</span>
+            </div>
+        </div>
     </header>
 
-    <div class="gallery">
-        <img src="photos/M1.jpg" style="transform: rotate(3deg);">
-        <img src="photos/M2.jpg">
-    </div>
+    <main class="max-w-4xl w-full mx-auto px-4 py-8 flex-grow space-y-10">
 
-    <button class="surprise-btn" onclick="openSurprise()">SURPRISE! 🎁</button>
+        <!-- Corner 1: Daniel's Little Corner / Hugs for Erika -->
+        <section class="cute-card p-6 sm:p-8 bg-gradient-to-br from-white via-pink-50/40 to-amber-50/30">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 rounded-full bg-pink-200 flex items-center justify-center text-pink-700 text-lg shadow-inner">
+                    <i class="fa-solid fa-hand-holding-heart"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold text-pink-700">Daniel's Little Corner / Hugs for Erika</h2>
+                    <p class="text-xs text-slate-500">A safe space filled with endless comfort & understanding</p>
+                </div>
+            </div>
 
-    <div id="modal-overlay">
-        <div class="modal-content">
-            <h2 style="font-family: 'Fredoka One';">Huli Ka, Erika! Hahahaha🤫</h2>
-            <p>I know you're excited, but the big surprise isn't ready until our anniversary (and my birthday!)</p>
-            
-            <div id="countdown">Loading...</div>
+            <!-- Tender comforting message -->
+            <div class="bg-white/90 border-l-4 border-pink-400 p-5 rounded-r-xl shadow-xs mb-6">
+                <p class="text-slate-700 text-base sm:text-lg leading-relaxed font-normal">
+                    "Erika, my love, what you're going through right now with endometriosis is completely valid, and it is okay to feel tired or overwhelmed. Even when your mood changes or you feel irritable, please know that I will always understand and I am right here by your side through every single up and down because I love you endlessly."
+                </p>
+                <div class="mt-3 text-right text-xs font-semibold text-pink-500">— Always yours, Daniel ❤️</div>
+            </div>
 
-            <p><i>Everything is better when we wait for it together. I love you!</i></p>
-            
-            <button class="close-btn" onclick="closeSurprise()">I'll wait! 💙</button>
-            <br><br>
-            <a href="other.html" style="color: var(--ocean-blue); font-weight: bold;">Click here for a small teaser</a>
+            <!-- Daily Love & Comfort Note Box -->
+            <div class="bg-gradient-to-r from-amber-50 to-pink-50 p-5 sm:p-6 rounded-2xl border border-amber-200/60 shadow-xs">
+                <div class="flex items-center justify-between mb-3">
+                    <span class="text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-200/70 px-3 py-1 rounded-full">
+                        ✨ Daily Gentle Reminder & Fact
+                    </span>
+                    <button onclick="getRandomNote()" class="text-xs bg-pink-500 hover:bg-pink-600 text-white font-medium px-3 py-1.5 rounded-full transition shadow-xs flex items-center gap-1.5 cursor-pointer">
+                        <i class="fa-solid fa-rotate-right"></i> Another Note
+                    </button>
+                </div>
+                <div id="comfort-note-container" class="min-h-[70px] flex items-center">
+                    <p id="comfort-note-text" class="text-slate-700 text-base italic font-medium">
+                        Loading your comforting message...
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Corner 2: Erika's Hungry Tummy / Food Decision Helper -->
+        <section class="cute-card p-6 sm:p-8 bg-gradient-to-br from-white via-yellow-50/40 to-pink-50/30">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 rounded-full bg-yellow-200 flex items-center justify-center text-yellow-800 text-lg shadow-inner">
+                    <i class="fa-solid fa-utensils"></i>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold text-amber-700">Erika's Hungry Tummy / Food Decision Helper</h2>
+                    <p class="text-xs text-slate-500">Never stress about what to eat today! Let's pick something yummy.</p>
+                </div>
+            </div>
+
+            <!-- Food Generator Interactive Area -->
+            <div class="bg-white/90 p-6 rounded-2xl border border-yellow-200 text-center shadow-xs">
+                <div class="mb-6">
+                    <div id="food-emoji" class="text-6xl sm:text-7xl mb-3 transition-transform duration-300">🍲</div>
+                    <h3 id="food-name" class="text-2xl sm:text-3xl font-bold text-slate-800 mb-1">Click the button below!</h3>
+                    <p id="food-desc" class="text-sm text-slate-500 max-w-md mx-auto mb-4">Ready to satisfy your tummy with something warm and comforting?</p>
+                    
+                    <!-- I want this! Button -->
+                    <div id="want-btn-container" class="hidden">
+                        <button onclick="openFoodModal()" class="bg-pink-500 hover:bg-pink-600 text-white font-heading font-semibold text-sm px-6 py-2.5 rounded-full shadow-md transform active:scale-95 transition cursor-pointer inline-flex items-center gap-2">
+                            <i class="fa-solid fa-heart text-white"></i> I want this! 💕
+                        </button>
+                    </div>
+                </div>
+
+                <div class="flex flex-wrap justify-center gap-3">
+                    <button onclick="spinFoodWheel()" id="spin-btn" class="bg-gradient-to-r from-amber-400 to-pink-500 hover:from-amber-500 hover:to-pink-600 text-white font-heading font-bold text-lg px-8 py-3.5 rounded-full shadow-md transform active:scale-95 transition cursor-pointer flex items-center gap-2">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> What should Erika eat? 🍽️
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quick list tags of available foods -->
+            <div class="mt-6">
+                <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 text-center">Included in today's menu bucket:</p>
+                <div id="food-tags" class="flex flex-wrap justify-center gap-2">
+                    <!-- Dynamic tags loaded via JS -->
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Custom Pop-up Modal for Food Choice -->
+    <div id="food-modal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4 z-50 hidden opacity-0 transition-opacity duration-300">
+        <div id="modal-content" class="bg-white rounded-3xl max-w-sm w-full p-6 border-4 border-pink-300 shadow-2xl text-center transform scale-90 transition-transform duration-300">
+            <div class="w-16 h-16 bg-pink-100 text-pink-500 rounded-full flex items-center justify-center text-3xl mx-auto mb-4 shadow-inner">
+                <i class="fa-solid fa-phone-volume animate-bounce"></i>
+            </div>
+            <h3 class="text-xl font-bold text-pink-600 font-heading mb-2">Craving Unlocked! 😋</h3>
+            <p id="modal-message" class="text-slate-700 text-sm leading-relaxed mb-6 font-medium">
+                Call Daniel at <span class="font-bold text-pink-600">0998 233 2725</span> and tell him that you want this food!
+            </p>
+            <button onclick="closeFoodModal()" class="w-full bg-gradient-to-r from-pink-500 to-amber-400 hover:from-pink-600 hover:to-amber-500 text-white font-heading font-bold py-3 rounded-2xl shadow-md transition cursor-pointer">
+                Yay, Let's Call Daniel! 💖
+            </button>
         </div>
     </div>
 
-    <div class="old-site-container">
-        <a href="03172026_index.html" class="old-site-btn">Go back to old website</a>
-    </div>
-    <div class="old-site-container">
-        <a href="Birthday.html" class="old-site-btn">Link to other website</a>
-    </div>
-     <div class="old-site-container">
-        <a href="megonnamarryyou.html" class="old-site-btn">Go back to other website</a>
-    </div>
+    <footer class="w-full py-6 text-center text-xs text-slate-400 border-t border-pink-100 bg-white/50">
+        <p>Built with endless love for Erika by Daniel 💕 | You are stronger than you know.</p>
+    </footer>
 
     <script>
-        function openSurprise() {
-            document.getElementById('modal-overlay').style.display = 'flex';
-        }
+        // Array of 10+ uplifting endometriosis messages & facts from the internet
+        const comfortNotes = [
+            "Endometriosis is a real, physical condition, and feeling exhausted or in pain is completely valid. You are not alone, Erika.",
+            "Having endometriosis means your body is working extra hard every single day. Be gentle and patient with yourself, my love.",
+            "It is completely okay to rest, cancel plans, or spend all day in bed when your body asks for it. Daniel completely understands!",
+            "Endometriosis can make emotions rollercoaster, and that is 100% normal. Your feelings matter and I am always here to listen.",
+            "Research shows that warm compresses, cozy blankets, and comfort food can do wonders for endo pain. Let's take care of you!",
+            "You are an absolute warrior for handling everything this condition brings with such grace and strength.",
+            "Having bad days doesn't make you weak; it just means you're human. I will love you through the storm and the sunshine.",
+            "Gentle reminders: Drink plenty of warm water, wrap up in your favorite fluffy blanket, and let me handle the worries today.",
+            "Endometriosis is manageable, and with good days ahead, we will navigate every single symptom together as a team.",
+            "Your strength inspires me every day, Erika. Never feel guilty for needing a little extra care and comfort."
+        ];
 
-        function closeSurprise() {
-            document.getElementById('modal-overlay').style.display = 'none';
-        }
-
-        // --- COUNTDOWN LOGIC ---
-        // Anniversary/Birthday: March 25, 2026
-        const targetDate = new Date("March 25, 2026 00:00:00").getTime();
-
-        const timer = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = targetDate - now;
-
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-
-            if (distance < 0) {
-                clearInterval(timer);
-                document.getElementById("countdown").innerHTML = "HAPPY ANNIVERSARY!";
+        // Specific food items requested for Erika
+        const foodList = [
+            {
+                name: "Tofu Sisig",
+                emoji: "🍳",
+                desc: "Sizzling, savory, crispy tofu cubes tossed with onions and chilies. A healthy, delicious twist on a classic favorite that won't upset your tummy!"
+            },
+            {
+                name: "Baked sushi",
+                emoji: "🍣",
+                desc: "Layers of seasoned sushi rice, crab kani, and cream cheese baked to golden, savory perfection."
+            },
+            {
+                name: "Okoy",
+                emoji: "🦐",
+                desc: "Crispy, golden Filipino shrimp and vegetable fritters fried to crunchy perfection."
+            },
+            {
+                name: "Belgian Waffle",
+                emoji: "🧇",
+                desc: "Fluffy, golden brown waffles topped with syrup and sweet goodness for a comforting treat."
+            },
+            {
+                name: "Mo's Chocolate Chips",
+                emoji: "🍪",
+                desc: "Decadent, chewy, melt-in-your-mouth chocolate chip cookies that bring instant happiness."
+            },
+            {
+                name: "Sabaw Tapos Buto Buto ng mustasa",
+                emoji: "🍲",
+                desc: "A soothing, warm, savory bone broth simmered with fresh mustard greens to comfort your soul."
+            },
+            {
+                name: "Vietnamese Spring Roll",
+                emoji: "🌯",
+                desc: "Fresh, crisp rolls packed with veggies and herbs, wrapped in delicate rice paper with tasty dip."
+            },
+            {
+                name: "Yabu Foods!",
+                emoji: "🍱",
+                desc: "Crispy katsu, fluffy Japanese rice, and warm miso soup to satisfy all your Japanese food cravings."
             }
-        }, 1000);
-    </script>
+        ];
 
+        let selectedCurrentFood = null;
+
+        // Function to display a random comfort note
+        function getRandomNote() {
+            const randomIndex = Math.floor(Math.random() * comfortNotes.length);
+            const noteText = document.getElementById('comfort-note-text');
+            
+            // Subtle fade effect
+            noteText.style.opacity = 0;
+            setTimeout(() => {
+                noteText.textContent = `"${comfortNotes[randomIndex]}"`;
+                noteText.style.opacity = 1;
+            }, 150);
+        }
+
+        // Function to spin / pick random food
+        function spinFoodWheel() {
+            const btn = document.getElementById('spin-btn');
+            const emojiEl = document.getElementById('food-emoji');
+            const nameEl = document.getElementById('food-name');
+            const descEl = document.getElementById('food-desc');
+            const wantBtnContainer = document.getElementById('want-btn-container');
+
+            // Hide button while spinning
+            wantBtnContainer.classList.add('hidden');
+
+            // Add spinning animation class or bounce
+            btn.disabled = true;
+            btn.classList.add('opacity-75');
+
+            let counter = 0;
+            const maxTaps = 12;
+            const intervalTime = 75;
+
+            const rollInterval = setInterval(() => {
+                const randomTempFood = foodList[Math.floor(Math.random() * foodList.length)];
+                emojiEl.textContent = randomTempFood.emoji;
+                nameEl.textContent = randomTempFood.name;
+                descEl.textContent = randomTempFood.desc;
+                
+                // Add minor shake animation
+                emojiEl.style.transform = `scale(${1 + (counter % 2) * 0.1}) rotate(${ (counter % 2 === 0 ? 5 : -5) }deg)`;
+                
+                counter++;
+                if (counter >= maxTaps) {
+                    clearInterval(rollInterval);
+                    
+                    // Pick final definitive food
+                    selectedCurrentFood = foodList[Math.floor(Math.random() * foodList.length)];
+                    emojiEl.textContent = selectedCurrentFood.emoji;
+                    nameEl.textContent = selectedCurrentFood.name;
+                    descEl.textContent = selectedCurrentFood.desc;
+                    emojiEl.style.transform = 'scale(1) rotate(0deg)';
+
+                    btn.disabled = false;
+                    btn.classList.remove('opacity-75');
+
+                    // Show "I want this!" button
+                    wantBtnContainer.classList.remove('hidden');
+
+                    // Trigger cute confetti celebration
+                    if (typeof confetti === 'function') {
+                        confetti({
+                            particleCount: 50,
+                            spread: 60,
+                            origin: { y: 0.8 },
+                            colors: ['#f472b6', '#fbbf24', '#f87171']
+                        });
+                    }
+                }
+            }, intervalTime);
+        }
+
+        // Modal Controls
+        function openFoodModal() {
+            const modal = document.getElementById('food-modal');
+            const modalContent = document.getElementById('modal-content');
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-90');
+                modalContent.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeFoodModal() {
+            const modal = document.getElementById('food-modal');
+            const modalContent = document.getElementById('modal-content');
+            modal.classList.add('opacity-0');
+            modalContent.classList.remove('scale-100');
+            modalContent.classList.add('scale-90');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // Render food tags in the footer preview list
+        function renderFoodTags() {
+            const tagsContainer = document.getElementById('food-tags');
+            tagsContainer.innerHTML = '';
+            foodList.forEach(food => {
+                const tag = document.createElement('span');
+                tag.className = 'bg-white border border-yellow-200 text-slate-600 text-xs px-3 py-1 rounded-full shadow-2xs font-medium flex items-center gap-1';
+                tag.innerHTML = `<span>${food.emoji}</span> ${food.name}`;
+                tagsContainer.appendChild(tag);
+            });
+        }
+
+        // Initialize page elements on load
+        window.onload = function() {
+            getRandomNote();
+            renderFoodTags();
+        };
+    </script>
 </body>
 </html>
