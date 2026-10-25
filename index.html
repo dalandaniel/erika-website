@@ -3,350 +3,584 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Love, Erika 💖</title>
+    <title>Happy Birthday, Erika! 🎉</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Poppins & Fredoka for cozy/cute vibes -->
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <!-- FontAwesome for cute icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Canvas Confetti for celebrations -->
+    <!-- Canvas Confetti Library -->
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        pastelPink: '#FFD1DC',
+                        roseGold: '#B76E79',
+                        softPurple: '#E6E6FA',
+                        warmGold: '#FFD700',
+                        lavenderBg: '#FAF5FF',
+                    },
+                    fontFamily: {
+                        cursive: ['Dancing Script', 'cursive'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
     <style>
+        /* Custom Keyframe Animations & FX */
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #fffaf0; /* Warm cream background */
-            color: #4a3b32;
+            background: linear-gradient(135deg, #fff5f7 0%, #f3e8ff 50%, #fff0f5 100%);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
         }
-        h1, h2, h3, .font-heading {
-            font-family: 'Fredoka', sans-serif;
+
+        /* Floating Background Bubbles/Bokeh */
+        .bg-element {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.35;
+            animation: float 12s infinite ease-in-out;
+            pointer-events: none;
         }
-        /* Custom cute soft shadows and borders */
-        .cute-card {
-            background: #ffffff;
-            border: 3px dashed #fcd34d;
-            border-radius: 2rem;
-            box-shadow: 0 10px 25px -5px rgba(251, 191, 36, 0.15);
-            transition: all 0.3s ease;
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(180deg); }
         }
-        .cute-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 15px 30px -5px rgba(251, 191, 36, 0.25);
+
+        /* Card Flip Styles */
+        .perspective {
+            perspective: 1000px;
         }
-        .pulse-heart {
-            animation: pulse-slow 2s infinite;
+        .transform-style-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        @keyframes pulse-slow {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+        .flipped {
+            transform: rotateY(180deg);
         }
-        /* Custom scrollbar */
+        .backface-hidden {
+            backface-visibility: hidden;
+        }
+        .rotate-y-180 {
+            transform: rotateY(180deg);
+        }
+
+        /* Candle Flame Flicker */
+        .flame {
+            transform-origin: center bottom;
+            animation: flicker 1.2s infinite ease-in-out alternate;
+        }
+        @keyframes flicker {
+            0% { transform: scale(1) rotate(-2deg); opacity: 0.9; }
+            50% { transform: scale(1.15) rotate(2deg); opacity: 1; filter: drop-shadow(0 0 10px #ff9d00); }
+            100% { transform: scale(0.95) rotate(-1deg); opacity: 0.85; }
+        }
+
+        /* Smoke effect when candle is blown */
+        .smoke {
+            animation: riseSmoke 1.5s ease-out forwards;
+        }
+        @keyframes riseSmoke {
+            0% { opacity: 0.8; transform: translateY(0) scale(1); }
+            100% { opacity: 0; transform: translateY(-30px) scale(2.5); filter: blur(4px); }
+        }
+
+        /* Balloon Floating & Pop Effect */
+        .balloon-wrapper {
+            transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .balloon-wrapper:hover {
+            transform: scale(1.08) translateY(-5deg);
+        }
+        .popped {
+            animation: popOut 0.3s forwards ease-in;
+        }
+        @keyframes popOut {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.3); opacity: 0.8; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+
+        /* Custom Scrollbar */
         ::-webkit-scrollbar {
-            width: 10px;
+            width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #fff5f5;
+            background: #FAF5FF;
         }
         ::-webkit-scrollbar-thumb {
-            background: #fbcfe8;
-            border-radius: 5px;
+            background: #F472B6;
+            border-radius: 10px;
         }
     </style>
 </head>
-<body class="bg-[#FFFDF9] min-h-screen flex flex-col justify-between selection:bg-pink-200">
+<body class="min-h-screen text-gray-800 relative pb-16 selection:bg-pink-300 selection:text-pink-900">
 
-    <header class="w-full py-6 px-4 bg-gradient-to-r from-pink-100 via-yellow-50 to-pink-100 shadow-sm border-b border-pink-200/50">
-        <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between text-center sm:text-left gap-3">
-            <div class="flex items-center space-x-3">
-                <span class="text-3xl pulse-heart">🧸</span>
-                <div>
-                    <h1 class="text-2xl font-bold text-pink-600 tracking-wide">For My Dearest Erika</h1>
-                    <p class="text-xs text-amber-700 font-medium">Made with all my love by Daniel 💌</p>
-                </div>
+    <!-- Floating Background Decorative Elements -->
+    <div class="bg-element bg-pink-200 w-64 h-64 -top-10 -left-10" style="animation-delay: 0s;"></div>
+    <div class="bg-element bg-purple-200 w-80 h-80 top-1/3 -right-20" style="animation-delay: 3s;"></div>
+    <div class="bg-element bg-yellow-100 w-72 h-72 bottom-10 left-10" style="animation-delay: 6s;"></div>
+
+    <!-- Main Container -->
+    <div class="max-w-4xl mx-auto px-4 py-8 relative z-10">
+
+        <!-- Header / Music Toggle Bar -->
+        <header class="flex justify-between items-center mb-8 bg-white/60 backdrop-blur-md px-6 py-3 rounded-full shadow-sm border border-pink-100">
+            <div class="flex items-center space-x-2">
+                <span class="text-xl">✨</span>
+                <span class="font-semibold text-roseGold tracking-wide text-sm sm:text-base">Erika's Special Day</span>
             </div>
-            <div class="flex items-center gap-2 bg-white/80 px-4 py-2 rounded-full border border-pink-200 shadow-xs text-sm text-pink-700 font-semibold">
-                <i class="fa-solid fa-heart text-pink-500 animate-bounce"></i>
-                <span>Endometriosis Warrior & Foodie</span>
-            </div>
-        </div>
-    </header>
-
-    <main class="max-w-4xl w-full mx-auto px-4 py-8 flex-grow space-y-10">
-
-        <!-- Corner 1: Daniel's Little Corner / Hugs for Erika -->
-        <section class="cute-card p-6 sm:p-8 bg-gradient-to-br from-white via-pink-50/40 to-amber-50/30">
-            <div class="flex items-center gap-3 mb-4">
-                <div class="w-10 h-10 rounded-full bg-pink-200 flex items-center justify-center text-pink-700 text-lg shadow-inner">
-                    <i class="fa-solid fa-hand-holding-heart"></i>
-                </div>
-                <div>
-                    <h2 class="text-2xl font-bold text-pink-700">Daniel's Little Corner / Hugs for Erika</h2>
-                    <p class="text-xs text-slate-500">A safe space filled with endless comfort & understanding</p>
-                </div>
-            </div>
-
-            <!-- Tender comforting message -->
-            <div class="bg-white/90 border-l-4 border-pink-400 p-5 rounded-r-xl shadow-xs mb-6">
-                <p class="text-slate-700 text-base sm:text-lg leading-relaxed font-normal">
-                    "Erika, my love, what you're going through right now with endometriosis is completely valid, and it is okay to feel tired or overwhelmed. Even when your mood changes or you feel irritable, please know that I will always understand and I am right here by your side through every single up and down because I love you endlessly."
-                </p>
-                <div class="mt-3 text-right text-xs font-semibold text-pink-500">— Always yours, Daniel ❤️</div>
-            </div>
-
-            <!-- Daily Love & Comfort Note Box -->
-            <div class="bg-gradient-to-r from-amber-50 to-pink-50 p-5 sm:p-6 rounded-2xl border border-amber-200/60 shadow-xs">
-                <div class="flex items-center justify-between mb-3">
-                    <span class="text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-200/70 px-3 py-1 rounded-full">
-                        ✨ Daily Gentle Reminder & Fact
-                    </span>
-                    <button onclick="getRandomNote()" class="text-xs bg-pink-500 hover:bg-pink-600 text-white font-medium px-3 py-1.5 rounded-full transition shadow-xs flex items-center gap-1.5 cursor-pointer">
-                        <i class="fa-solid fa-rotate-right"></i> Another Note
-                    </button>
-                </div>
-                <div id="comfort-note-container" class="min-h-[70px] flex items-center">
-                    <p id="comfort-note-text" class="text-slate-700 text-base italic font-medium">
-                        Loading your comforting message...
-                    </p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Corner 2: Erika's Hungry Tummy / Food Decision Helper -->
-        <section class="cute-card p-6 sm:p-8 bg-gradient-to-br from-white via-yellow-50/40 to-pink-50/30">
-            <div class="flex items-center gap-3 mb-4">
-                <div class="w-10 h-10 rounded-full bg-yellow-200 flex items-center justify-center text-yellow-800 text-lg shadow-inner">
-                    <i class="fa-solid fa-utensils"></i>
-                </div>
-                <div>
-                    <h2 class="text-2xl font-bold text-amber-700">Erika's Hungry Tummy / Food Decision Helper</h2>
-                    <p class="text-xs text-slate-500">Never stress about what to eat today! Let's pick something yummy.</p>
-                </div>
-            </div>
-
-            <!-- Food Generator Interactive Area -->
-            <div class="bg-white/90 p-6 rounded-2xl border border-yellow-200 text-center shadow-xs">
-                <div class="mb-6">
-                    <div id="food-emoji" class="text-6xl sm:text-7xl mb-3 transition-transform duration-300">🍲</div>
-                    <h3 id="food-name" class="text-2xl sm:text-3xl font-bold text-slate-800 mb-1">Click the button below!</h3>
-                    <p id="food-desc" class="text-sm text-slate-500 max-w-md mx-auto mb-4">Ready to satisfy your tummy with something warm and comforting?</p>
-                    
-                    <!-- I want this! Button -->
-                    <div id="want-btn-container" class="hidden">
-                        <button onclick="openFoodModal()" class="bg-pink-500 hover:bg-pink-600 text-white font-heading font-semibold text-sm px-6 py-2.5 rounded-full shadow-md transform active:scale-95 transition cursor-pointer inline-flex items-center gap-2">
-                            <i class="fa-solid fa-heart text-white"></i> I want this! 💕
-                        </button>
-                    </div>
-                </div>
-
-                <div class="flex flex-wrap justify-center gap-3">
-                    <button onclick="spinFoodWheel()" id="spin-btn" class="bg-gradient-to-r from-amber-400 to-pink-500 hover:from-amber-500 hover:to-pink-600 text-white font-heading font-bold text-lg px-8 py-3.5 rounded-full shadow-md transform active:scale-95 transition cursor-pointer flex items-center gap-2">
-                        <i class="fa-solid fa-wand-magic-sparkles"></i> What should Erika eat? 🍽️
-                    </button>
-                </div>
-            </div>
-
-            <!-- Quick list tags of available foods -->
-            <div class="mt-6">
-                <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 text-center">Included in today's menu bucket:</p>
-                <div id="food-tags" class="flex flex-wrap justify-center gap-2">
-                    <!-- Dynamic tags loaded via JS -->
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Custom Pop-up Modal for Food Choice -->
-    <div id="food-modal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4 z-50 hidden opacity-0 transition-opacity duration-300">
-        <div id="modal-content" class="bg-white rounded-3xl max-w-sm w-full p-6 border-4 border-pink-300 shadow-2xl text-center transform scale-90 transition-transform duration-300">
-            <div class="w-16 h-16 bg-pink-100 text-pink-500 rounded-full flex items-center justify-center text-3xl mx-auto mb-4 shadow-inner">
-                <i class="fa-solid fa-phone-volume animate-bounce"></i>
-            </div>
-            <h3 class="text-xl font-bold text-pink-600 font-heading mb-2">Craving Unlocked! 😋</h3>
-            <p id="modal-message" class="text-slate-700 text-sm leading-relaxed mb-6 font-medium">
-                Call Daniel at <span class="font-bold text-pink-600">0998 233 2725</span> and tell him that you want this food!
-            </p>
-            <button onclick="closeFoodModal()" class="w-full bg-gradient-to-r from-pink-500 to-amber-400 hover:from-pink-600 hover:to-amber-500 text-white font-heading font-bold py-3 rounded-2xl shadow-md transition cursor-pointer">
-                Yay, Let's Call Daniel! 💖
+            <button id="bgMusicBtn" onclick="toggleAudio()" class="flex items-center space-x-2 px-4 py-1.5 rounded-full bg-pink-100 hover:bg-pink-200 text-pink-700 text-sm font-medium transition-all shadow-sm">
+                <i id="musicIcon" class="fas fa-music"></i>
+                <span id="musicText">Play Music</span>
             </button>
-        </div>
+        </header>
+
+        <!-- 1. Hero Section -->
+        <section class="text-center py-10 px-4 rounded-3xl bg-white/50 backdrop-blur-sm border border-white/80 shadow-xl mb-12 relative overflow-hidden">
+            <div class="inline-block px-4 py-1.5 bg-pink-100 text-pink-600 font-medium text-xs sm:text-sm rounded-full mb-4 tracking-wider uppercase">
+                👑 Happy Birthday 👑
+            </div>
+            
+            <h1 class="text-5xl sm:text-7xl font-bold text-gray-800 font-cursive mb-4 drop-shadow-sm">
+                Happy Birthday, <span class="bg-gradient-to-r from-pink-500 via-purple-500 to-roseGold bg-clip-text text-transparent">Erika!</span> 🎉
+            </h1>
+
+            <p class="text-gray-600 text-base sm:text-lg max-w-lg mx-auto mb-8 font-light">
+                Today is all about celebrating you! May your day be filled with endless laughter, sweet moments, and lovely surprises.
+            </p>
+
+            <!-- Birthday Cake Illustration & Candle Interaction -->
+            <div class="my-8 flex flex-col items-center justify-center">
+                <!-- SVG Cake -->
+                <div class="relative w-64 h-60 flex flex-col items-center justify-end">
+                    
+                    <!-- Candles -->
+                    <div class="flex space-x-6 mb-1 z-10">
+                        <!-- Candle 1 -->
+                        <div class="candle-group flex flex-col items-center cursor-pointer group" onclick="blowCandle(this)">
+                            <div class="flame w-3.5 h-5 bg-gradient-to-t from-orange-500 via-yellow-400 to-white rounded-full shadow-md"></div>
+                            <div class="w-3 h-12 bg-gradient-to-r from-pink-300 to-pink-400 rounded-t-sm shadow-inner border-b border-pink-500/20"></div>
+                        </div>
+                        <!-- Candle 2 (Center) -->
+                        <div class="candle-group flex flex-col items-center cursor-pointer group" onclick="blowCandle(this)">
+                            <div class="flame w-3.5 h-5 bg-gradient-to-t from-orange-500 via-yellow-400 to-white rounded-full shadow-md"></div>
+                            <div class="w-3 h-14 bg-gradient-to-r from-purple-300 to-purple-400 rounded-t-sm shadow-inner border-b border-purple-500/20"></div>
+                        </div>
+                        <!-- Candle 3 -->
+                        <div class="candle-group flex flex-col items-center cursor-pointer group" onclick="blowCandle(this)">
+                            <div class="flame w-3.5 h-5 bg-gradient-to-t from-orange-500 via-yellow-400 to-white rounded-full shadow-md"></div>
+                            <div class="w-3 h-12 bg-gradient-to-r from-pink-300 to-pink-400 rounded-t-sm shadow-inner border-b border-pink-500/20"></div>
+                        </div>
+                    </div>
+
+                    <!-- Cake Layers -->
+                    <div class="w-48 h-12 bg-pink-200 rounded-t-xl border-b-4 border-pink-300 relative shadow-md flex items-center justify-center">
+                        <!-- Frosting drips -->
+                        <div class="absolute top-0 w-full h-4 bg-white rounded-t-xl flex justify-around">
+                            <div class="w-4 h-6 bg-white rounded-b-full"></div>
+                            <div class="w-5 h-8 bg-white rounded-b-full"></div>
+                            <div class="w-4 h-5 bg-white rounded-b-full"></div>
+                            <div class="w-6 h-7 bg-white rounded-b-full"></div>
+                        </div>
+                    </div>
+                    <div class="w-56 h-14 bg-purple-200 rounded-t-lg border-b-4 border-purple-300 relative shadow-md flex items-center justify-center">
+                        <div class="w-full h-3 bg-pink-100 absolute top-0 flex justify-around">
+                            <div class="w-3 h-3 bg-pink-300 rounded-full -mt-1"></div>
+                            <div class="w-3 h-3 bg-pink-300 rounded-full -mt-1"></div>
+                            <div class="w-3 h-3 bg-pink-300 rounded-full -mt-1"></div>
+                            <div class="w-3 h-3 bg-pink-300 rounded-full -mt-1"></div>
+                        </div>
+                    </div>
+                    <div class="w-64 h-16 bg-gradient-to-r from-pink-300 via-roseGold/40 to-pink-300 rounded-t-lg border-b-4 border-pink-400 relative shadow-lg">
+                        <div class="w-full h-4 bg-white/80 absolute top-0"></div>
+                    </div>
+                    <!-- Cake Plate -->
+                    <div class="w-72 h-4 bg-gray-200 rounded-full shadow-lg border-t border-gray-300"></div>
+                </div>
+
+                <p id="candleInstruction" class="text-xs sm:text-sm text-pink-600 font-medium mt-3 bg-pink-50 px-3 py-1 rounded-full border border-pink-200 animate-pulse">
+                    💡 Click or tap the candle flames to blow them out!
+                </p>
+            </div>
+
+            <!-- Celebration Blast Button -->
+            <button onclick="triggerConfettiBurst()" class="mt-2 group relative inline-flex items-center justify-center px-8 py-3.5 font-bold text-white transition-all duration-300 ease-out bg-gradient-to-r from-pink-400 via-rose-400 to-purple-400 rounded-full shadow-lg hover:shadow-pink-300/50 hover:scale-105 active:scale-95">
+                <span class="flex items-center space-x-2 text-base">
+                    <span>Celebrate Erika!</span>
+                    <i class="fas fa-magic text-yellow-200 group-hover:rotate-12 transition-transform"></i>
+                </span>
+            </button>
+        </section>
+
+        <!-- 2. Interactive Card / Envelope Wish Section -->
+        <section class="mb-16 text-center">
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-2 font-cursive">A Special Message For You</h2>
+            <p class="text-sm text-gray-500 mb-6">Click the envelope below to open your birthday card!</p>
+
+            <div class="perspective max-w-md mx-auto h-80 cursor-pointer" onclick="flipCard(this)">
+                <div id="wishCard" class="transform-style-3d w-full h-full relative rounded-2xl shadow-xl transition-all duration-700">
+                    
+                    <!-- Front of Envelope/Card -->
+                    <div class="backface-hidden absolute inset-0 bg-gradient-to-br from-pink-200 via-purple-100 to-pink-100 border-2 border-white rounded-2xl flex flex-col items-center justify-center p-6 text-center">
+                        <div class="w-16 h-16 bg-white/80 rounded-full flex items-center justify-center mb-4 shadow-sm text-pink-400 text-2xl">
+                            <i class="fas fa-envelope-open-text"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-700 font-cursive">Tap to Open Card</h3>
+                        <p class="text-xs text-gray-500 mt-2">Prepared with love just for Erika</p>
+                        <div class="mt-6 px-4 py-1.5 bg-white/60 rounded-full text-xs text-pink-600 font-medium">
+                            Click to Reveal ✨
+                        </div>
+                    </div>
+
+                    <!-- Inside / Back of Card -->
+                    <div class="backface-hidden rotate-y-180 absolute inset-0 bg-white border-2 border-pink-200 rounded-2xl p-6 flex flex-col justify-between text-left shadow-2xl">
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center border-b border-pink-100 pb-2">
+                                <span class="font-cursive text-2xl font-bold text-pink-500">Dearest Erika,</span>
+                                <span class="text-xl">🌸</span>
+                            </div>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                On this wonderful day, I wish you endless happiness, good health, and all the success in the world. May your year ahead be filled with beautiful moments, bright opportunities, and unforgettable memories!
+                            </p>
+                            <p class="text-gray-600 text-sm leading-relaxed">
+                                Keep shining bright and inspiring everyone around you with your beautiful smile! ✨
+                            </p>
+                        </div>
+                        <div class="text-right border-t border-pink-100 pt-3">
+                            <span class="font-cursive text-lg font-bold text-roseGold">With warmest wishes ❤️</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Birthday Highlights / Memories Carousel -->
+        <section class="mb-16">
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 text-center mb-8 font-cursive">Wishing You All The Best ✨</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                <!-- Highlight Card 1 -->
+                <div class="bg-white/70 backdrop-blur-sm p-6 rounded-2xl border border-pink-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-1 text-center">
+                    <div class="w-12 h-12 bg-pink-100 text-pink-500 rounded-full flex items-center justify-center mx-auto mb-4 text-xl">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-2">Love & Joy</h3>
+                    <p class="text-xs sm:text-sm text-gray-600">May your day be surrounded by the people who love and cherish you most.</p>
+                </div>
+
+                <!-- Highlight Card 2 -->
+                <div class="bg-white/70 backdrop-blur-sm p-6 rounded-2xl border border-purple-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-1 text-center">
+                    <div class="w-12 h-12 bg-purple-100 text-purple-500 rounded-full flex items-center justify-center mx-auto mb-4 text-xl">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-2">Big Dreams</h3>
+                    <p class="text-xs sm:text-sm text-gray-600">May all your goals, wishes, and secret hopes come true this coming year!</p>
+                </div>
+
+                <!-- Highlight Card 3 -->
+                <div class="bg-white/70 backdrop-blur-sm p-6 rounded-2xl border border-yellow-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-1 text-center">
+                    <div class="w-12 h-12 bg-yellow-100 text-yellow-600 rounded-full flex items-center justify-center mx-auto mb-4 text-xl">
+                        <i class="fas fa-smile-beam"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-800 mb-2">Endless Smiles</h3>
+                    <p class="text-xs sm:text-sm text-gray-600">May laughter fill your ordinary days and turn them into extraordinary memories.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Interactive Mini Game: Pop the Birthday Balloons -->
+        <section class="bg-white/60 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-pink-100 shadow-lg mb-12 text-center">
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-800 mb-2 font-cursive">Pop the Balloons! 🎈</h2>
+            <p class="text-xs sm:text-sm text-gray-500 mb-6">Click/tap the balloons to pop them and reveal little birthday wishes!</p>
+
+            <!-- Balloon Container -->
+            <div id="balloonArea" class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mx-auto min-h-[160px] items-center justify-items-center">
+                <!-- Generated dynamically via JavaScript -->
+            </div>
+
+            <!-- Score / Counter -->
+            <div class="mt-6 inline-flex items-center space-x-2 bg-pink-100/80 px-4 py-1.5 rounded-full text-pink-700 text-xs font-semibold">
+                <span>Balloons Popped:</span>
+                <span id="popCount" class="text-sm font-bold">0</span>
+                <span>/ 4</span>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center text-gray-400 text-xs py-4">
+            Made with 💕 for Erika's Special Day • Happy Birthday!
+        </footer>
+
     </div>
 
-    <footer class="w-full py-6 text-center text-xs text-slate-400 border-t border-pink-100 bg-white/50">
-        <p>Built with endless love for Erika by Daniel 💕 | You are stronger than you know.</p>
-    </footer>
-
+    <!-- Web Audio API Synthesizer for Festive Sounds & Music -->
     <script>
-        // Array of 10+ uplifting endometriosis messages & facts from the internet
-        const comfortNotes = [
-            "Endometriosis is a real, physical condition, and feeling exhausted or in pain is completely valid. You are not alone, Erika.",
-            "Having endometriosis means your body is working extra hard every single day. Be gentle and patient with yourself, my love.",
-            "It is completely okay to rest, cancel plans, or spend all day in bed when your body asks for it. Daniel completely understands!",
-            "Endometriosis can make emotions rollercoaster, and that is 100% normal. Your feelings matter and I am always here to listen.",
-            "Research shows that warm compresses, cozy blankets, and comfort food can do wonders for endo pain. Let's take care of you!",
-            "You are an absolute warrior for handling everything this condition brings with such grace and strength.",
-            "Having bad days doesn't make you weak; it just means you're human. I will love you through the storm and the sunshine.",
-            "Gentle reminders: Drink plenty of warm water, wrap up in your favorite fluffy blanket, and let me handle the worries today.",
-            "Endometriosis is manageable, and with good days ahead, we will navigate every single symptom together as a team.",
-            "Your strength inspires me every day, Erika. Never feel guilty for needing a little extra care and comfort."
-        ];
+        // Web Audio Context initialization
+        let audioCtx = null;
+        let isPlaying = false;
+        let bgMusicInterval = null;
 
-        // Specific food items requested for Erika
-        const foodList = [
-            {
-                name: "Tofu Sisig",
-                emoji: "🍳",
-                desc: "Sizzling, savory, crispy tofu cubes tossed with onions and chilies. A healthy, delicious twist on a classic favorite that won't upset your tummy!"
-            },
-            {
-                name: "Baked sushi",
-                emoji: "🍣",
-                desc: "Layers of seasoned sushi rice, crab kani, and cream cheese baked to golden, savory perfection."
-            },
-            {
-                name: "Okoy",
-                emoji: "🦐",
-                desc: "Crispy, golden Filipino shrimp and vegetable fritters fried to crunchy perfection."
-            },
-            {
-                name: "Belgian Waffle",
-                emoji: "🧇",
-                desc: "Fluffy, golden brown waffles topped with syrup and sweet goodness for a comforting treat."
-            },
-            {
-                name: "Mo's Chocolate Chips",
-                emoji: "🍪",
-                desc: "Decadent, chewy, melt-in-your-mouth chocolate chip cookies that bring instant happiness."
-            },
-            {
-                name: "Sabaw Tapos Buto Buto ng mustasa",
-                emoji: "🍲",
-                desc: "A soothing, warm, savory bone broth simmered with fresh mustard greens to comfort your soul."
-            },
-            {
-                name: "Vietnamese Spring Roll",
-                emoji: "🌯",
-                desc: "Fresh, crisp rolls packed with veggies and herbs, wrapped in delicate rice paper with tasty dip."
-            },
-            {
-                name: "Yabu Foods!",
-                emoji: "🍱",
-                desc: "Crispy katsu, fluffy Japanese rice, and warm miso soup to satisfy all your Japanese food cravings."
+        function initAudio() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
             }
+        }
+
+        // Play simple synthesized sound FX (Balloons, Candels, Confetti)
+        function playPopSound() {
+            try {
+                initAudio();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(400, audioCtx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.08);
+                
+                gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.08);
+                
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.08);
+            } catch(e) { console.log(e); }
+        }
+
+        function playBlowSound() {
+            try {
+                initAudio();
+                const bufferSize = audioCtx.sampleRate * 0.3;
+                const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+                const output = buffer.getChannelData(0);
+                for (let i = 0; i < bufferSize; i++) {
+                    output[i] = Math.random() * 2 - 1;
+                }
+
+                const whiteNoise = audioCtx.createBufferSource();
+                whiteNoise.buffer = buffer;
+
+                const filter = audioCtx.createBiquadFilter();
+                filter.type = 'lowpass';
+                filter.frequency.setValueAtTime(800, audioCtx.currentTime);
+
+                const gain = audioCtx.createGain();
+                gain.gain.setValueAtTime(0.2, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.3);
+
+                whiteNoise.connect(filter);
+                filter.connect(gain);
+                gain.connect(audioCtx.destination);
+
+                whiteNoise.start();
+            } catch(e) { console.log(e); }
+        }
+
+        // Happy Birthday Melodic Chime Generator
+        const birthdayMelody = [
+            { note: 261.63, duration: 0.3 }, // C4
+            { note: 261.63, duration: 0.3 }, // C4
+            { note: 293.66, duration: 0.6 }, // D4
+            { note: 261.63, duration: 0.6 }, // C4
+            { note: 349.23, duration: 0.6 }, // F4
+            { note: 329.63, duration: 1.0 }, // E4
+            
+            { note: 261.63, duration: 0.3 }, // C4
+            { note: 261.63, duration: 0.3 }, // C4
+            { note: 293.66, duration: 0.6 }, // D4
+            { note: 261.63, duration: 0.6 }, // C4
+            { note: 392.00, duration: 0.6 }, // G4
+            { note: 349.23, duration: 1.0 }, // F4
         ];
 
-        let selectedCurrentFood = null;
-
-        // Function to display a random comfort note
-        function getRandomNote() {
-            const randomIndex = Math.floor(Math.random() * comfortNotes.length);
-            const noteText = document.getElementById('comfort-note-text');
+        let noteIndex = 0;
+        function playNextMelodyNote() {
+            if (!isPlaying) return;
+            initAudio();
+            const item = birthdayMelody[noteIndex];
             
-            // Subtle fade effect
-            noteText.style.opacity = 0;
-            setTimeout(() => {
-                noteText.textContent = `"${comfortNotes[randomIndex]}"`;
-                noteText.style.opacity = 1;
-            }, 150);
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            
+            osc.type = 'triangle';
+            osc.frequency.value = item.note;
+            
+            gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + item.duration - 0.05);
+            
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            
+            osc.start();
+            osc.stop(audioCtx.currentTime + item.duration);
+            
+            noteIndex = (noteIndex + 1) % birthdayMelody.length;
         }
 
-        // Function to spin / pick random food
-        function spinFoodWheel() {
-            const btn = document.getElementById('spin-btn');
-            const emojiEl = document.getElementById('food-emoji');
-            const nameEl = document.getElementById('food-name');
-            const descEl = document.getElementById('food-desc');
-            const wantBtnContainer = document.getElementById('want-btn-container');
+        function toggleAudio() {
+            initAudio();
+            const musicBtn = document.getElementById('bgMusicBtn');
+            const musicText = document.getElementById('musicText');
+            const musicIcon = document.getElementById('musicIcon');
 
-            // Hide button while spinning
-            wantBtnContainer.classList.add('hidden');
-
-            // Add spinning animation class or bounce
-            btn.disabled = true;
-            btn.classList.add('opacity-75');
-
-            let counter = 0;
-            const maxTaps = 12;
-            const intervalTime = 75;
-
-            const rollInterval = setInterval(() => {
-                const randomTempFood = foodList[Math.floor(Math.random() * foodList.length)];
-                emojiEl.textContent = randomTempFood.emoji;
-                nameEl.textContent = randomTempFood.name;
-                descEl.textContent = randomTempFood.desc;
+            if (!isPlaying) {
+                isPlaying = true;
+                musicText.innerText = "Music On";
+                musicBtn.classList.remove('bg-pink-100', 'text-pink-700');
+                musicBtn.classList.add('bg-pink-500', 'text-white');
+                musicIcon.classList.add('animate-bounce');
                 
-                // Add minor shake animation
-                emojiEl.style.transform = `scale(${1 + (counter % 2) * 0.1}) rotate(${ (counter % 2 === 0 ? 5 : -5) }deg)`;
-                
-                counter++;
-                if (counter >= maxTaps) {
-                    clearInterval(rollInterval);
-                    
-                    // Pick final definitive food
-                    selectedCurrentFood = foodList[Math.floor(Math.random() * foodList.length)];
-                    emojiEl.textContent = selectedCurrentFood.emoji;
-                    nameEl.textContent = selectedCurrentFood.name;
-                    descEl.textContent = selectedCurrentFood.desc;
-                    emojiEl.style.transform = 'scale(1) rotate(0deg)';
+                playNextMelodyNote();
+                bgMusicInterval = setInterval(playNextMelodyNote, 600);
+            } else {
+                isPlaying = false;
+                clearInterval(bgMusicInterval);
+                musicText.innerText = "Play Music";
+                musicBtn.classList.remove('bg-pink-500', 'text-white');
+                musicBtn.classList.add('bg-pink-100', 'text-pink-700');
+                musicIcon.classList.remove('animate-bounce');
+            }
+        }
 
-                    btn.disabled = false;
-                    btn.classList.remove('opacity-75');
+        /* Confetti FX Function */
+        function triggerConfettiBurst() {
+            playPopSound();
+            const duration = 2.5 * 1000;
+            const animationEnd = Date.now() + duration;
 
-                    // Show "I want this!" button
-                    wantBtnContainer.classList.remove('hidden');
+            (function frame() {
+                confetti({
+                    particleCount: 4,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 },
+                    colors: ['#FFD1DC', '#B76E79', '#E6E6FA', '#FFD700']
+                });
+                confetti({
+                    particleCount: 4,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 },
+                    colors: ['#FFD1DC', '#B76E79', '#E6E6FA', '#FFD700']
+                });
 
-                    // Trigger cute confetti celebration
-                    if (typeof confetti === 'function') {
-                        confetti({
-                            particleCount: 50,
-                            spread: 60,
-                            origin: { y: 0.8 },
-                            colors: ['#f472b6', '#fbbf24', '#f87171']
-                        });
-                    }
+                if (Date.now() < animationEnd) {
+                    requestAnimationFrame(frame);
                 }
-            }, intervalTime);
+            })();
         }
 
-        // Modal Controls
-        function openFoodModal() {
-            const modal = document.getElementById('food-modal');
-            const modalContent = document.getElementById('modal-content');
-            modal.classList.remove('hidden');
-            setTimeout(() => {
-                modal.classList.remove('opacity-0');
-                modalContent.classList.remove('scale-90');
-                modalContent.classList.add('scale-100');
-            }, 10);
+        /* Candle Blowing Logic */
+        let blownCount = 0;
+        function blowCandle(element) {
+            const flame = element.querySelector('.flame');
+            if (flame && flame.style.display !== 'none') {
+                playBlowSound();
+                flame.style.display = 'none';
+                
+                // Add smoke effect
+                const smoke = document.createElement('div');
+                smoke.className = 'w-2 h-2 bg-gray-400/50 rounded-full smoke';
+                element.insertBefore(smoke, element.firstChild);
+                
+                blownCount++;
+
+                if (blownCount === 3) {
+                    document.getElementById('candleInstruction').innerText = "✨ Yay! All candles blown out! Make a wish, Erika! ✨";
+                    document.getElementById('candleInstruction').classList.remove('animate-pulse');
+                    document.getElementById('candleInstruction').classList.add('bg-green-50', 'text-green-600', 'border-green-200');
+                    setTimeout(() => {
+                        triggerConfettiBurst();
+                    }, 300);
+                }
+            }
         }
 
-        function closeFoodModal() {
-            const modal = document.getElementById('food-modal');
-            const modalContent = document.getElementById('modal-content');
-            modal.classList.add('opacity-0');
-            modalContent.classList.remove('scale-100');
-            modalContent.classList.add('scale-90');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-            }, 300);
+        /* Card Flip Logic */
+        function flipCard(cardWrapper) {
+            const card = document.getElementById('wishCard');
+            card.classList.toggle('flipped');
+            playPopSound();
         }
 
-        // Render food tags in the footer preview list
-        function renderFoodTags() {
-            const tagsContainer = document.getElementById('food-tags');
-            tagsContainer.innerHTML = '';
-            foodList.forEach(food => {
-                const tag = document.createElement('span');
-                tag.className = 'bg-white border border-yellow-200 text-slate-600 text-xs px-3 py-1 rounded-full shadow-2xs font-medium flex items-center gap-1';
-                tag.innerHTML = `<span>${food.emoji}</span> ${food.name}`;
-                tagsContainer.appendChild(tag);
+        /* Balloon Pop Minigame Setup */
+        const balloonData = [
+            { color: 'from-pink-300 to-pink-400', wish: '💖 Stay Sweet!' },
+            { color: 'from-purple-300 to-purple-400', wish: '🌟 Shine Bright!' },
+            { color: 'from-rose-300 to-rose-400', wish: '🌸 Happiness!' },
+            { color: 'from-amber-200 to-yellow-300', wish: '✨ Joy Always!' }
+        ];
+
+        let poppedTotal = 0;
+
+        function initBalloons() {
+            const container = document.getElementById('balloonArea');
+            container.innerHTML = '';
+            poppedTotal = 0;
+            document.getElementById('popCount').innerText = poppedTotal;
+
+            balloonData.forEach((b, idx) => {
+                const bEl = document.createElement('div');
+                bEl.className = 'balloon-wrapper cursor-pointer flex flex-col items-center justify-center p-2';
+                bEl.innerHTML = `
+                    <div class="w-16 h-20 sm:w-20 sm:h-24 bg-gradient-to-t ${b.color} rounded-full shadow-md flex items-center justify-center relative border border-white/40">
+                        <span class="text-xs font-bold text-white/90 drop-shadow-sm text-center px-1">Pop Me</span>
+                        <div class="w-1.5 h-1.5 bg-white/60 rounded-full absolute top-3 left-4"></div>
+                    </div>
+                    <div class="w-1 h-8 bg-gray-300/80 -mt-1"></div>
+                `;
+
+                bEl.onclick = function() {
+                    if (!bEl.classList.contains('popped')) {
+                        playPopSound();
+                        bEl.classList.add('popped');
+                        poppedTotal++;
+                        document.getElementById('popCount').innerText = poppedTotal;
+
+                        // Replace popped balloon with wish badge
+                        setTimeout(() => {
+                            bEl.innerHTML = `
+                                <div class="px-3 py-2 bg-pink-100 text-pink-700 rounded-xl text-xs font-bold shadow-sm border border-pink-200 animate-bounce">
+                                    ${b.wish}
+                                </div>
+                            `;
+                            bEl.classList.remove('popped');
+                        }, 250);
+
+                        if (poppedTotal === 4) {
+                            setTimeout(() => {
+                                triggerConfettiBurst();
+                            }, 500);
+                        }
+                    }
+                };
+
+                container.appendChild(bEl);
             });
         }
 
-        // Initialize page elements on load
+        // Initialize elements on load
         window.onload = function() {
-            getRandomNote();
-            renderFoodTags();
+            initBalloons();
+            // Initial welcoming confetti burst after a brief delay
+            setTimeout(() => {
+                confetti({
+                    particleCount: 30,
+                    spread: 60,
+                    origin: { y: 0.8 },
+                    colors: ['#FFD1DC', '#B76E79', '#E6E6FA']
+                });
+            }, 500);
         };
     </script>
 </body>
